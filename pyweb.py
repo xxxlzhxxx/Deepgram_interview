@@ -44,7 +44,6 @@ def info():
 
 @bottle.route('/list',method='GET')   
 def list():       
-    
     maxlen = bottle.request.GET.get('maxlen')     
     if maxlen==None  or  maxlen.isdigit==False :
         res={'code':1,
@@ -66,6 +65,8 @@ def list():
         res.update({'data':data})
         return json.dumps(res)           
 
+    
+    
 @bottle.route('/download',method='GET')
 def download():
     name = bottle.request.GET.get('name')
@@ -92,14 +93,12 @@ def upload_do():
         return json.dumps(res)
     save_path = './wav/'+name+ext
     try:
-    
         upload.save(save_path) # appends upload.filename automatically
         res={'code':0,
         'msg':'ok'}
     except Exception as e:
         res={'code':1,
         'msg':'error :'+str(e)}
-    
     return json.dumps(res) 
 
    
