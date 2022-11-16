@@ -16,7 +16,6 @@ def getlen(fn):
 
 
 @bottle.route('/')
-@view('index.tpl')
 def index():     
     return "hello!"
 
